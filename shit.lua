@@ -170,8 +170,13 @@ local function fetchServers()
 
 		local newList = {}
 
+		local MIN_PLAYERS = 5
+		
 		for _, s in ipairs(data.data) do
-			if s.id ~= game.JobId and s.playing < s.maxPlayers then
+			if s.id ~= game.JobId
+				and s.playing < s.maxPlayers
+				and s.playing >= MIN_PLAYERS
+			then
 				table.insert(newList, s.id)
 			end
 		end
